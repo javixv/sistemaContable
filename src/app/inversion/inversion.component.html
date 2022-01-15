@@ -58,7 +58,7 @@
         <div class="col">
           <div class="form-group">
             <label for="exampleInputPassword1">Exchange</label>
-            <select class="form-control">
+            <select class="form-control" [ngModel]="VidExchange">
               <option *ngFor="let title of ListExchange">
                 {{title.nombre}}
               </option>
@@ -68,7 +68,7 @@
         <div class="col">
           <div class="form-group">
           <label for="exampleInputPassword1">Precio</label>
-          <input type="text" class="form-control" id="exampleInputPassword1">
+          <input type="text" class="form-control" id="exampleInputPassword1" [ngModel]="Vprecio">
           </div>
         </div>
       </div>
@@ -76,13 +76,13 @@
         <div class="col">
           <div class="form-group">
           <label for="exampleInputPassword1">Cantidad</label>
-          <input type="text" class="form-control" id="exampleInputPassword1">
+          <input type="text" class="form-control" id="exampleInputPassword1" [ngModel]="Vcantidadcripto">
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="exampleInputPassword1">Cripto Divisa</label>
-            <select class="form-control col-sm-4">
+            <select class="form-control col-sm-4" [ngModel]="VidCriptomoneda">
               <option *ngFor="let title of ListCriptoMoneda">
                 {{title.nombre}}
               </option>

@@ -19,7 +19,11 @@ export class InversionComponent implements OnInit {
  SimboloTransaccion  : any = "far fa-paper-plane";
  //Variables para Guardar Transacciones
  Vidtransaccion : any
- 
+ Vprecio : any
+ VidExchange  : any
+ VidCriptomoneda : any
+ VInversion : any
+ Vcantidadcripto : any
 
 
   constructor(
