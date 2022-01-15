@@ -26,4 +26,10 @@ export class TansaccionService {
     
     return this.http.get(this.myAppUrl + this.myApiUrl + '/GetAllView');
   }
+
+  postGuardarT(model : any): Observable<any>{    
+    return this.http.post(this.myAppUrl + this.myApiUrl + '/TGuardarT', model);
+  }
+
+
 }

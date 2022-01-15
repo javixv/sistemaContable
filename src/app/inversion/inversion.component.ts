@@ -16,6 +16,10 @@ export class InversionComponent implements OnInit {
  ListExchange        : any = [];
  ListTipoTransaccion : any = [];
  ListCriptoMoneda    : any = [];
+ SimboloTransaccion  : any = "far fa-paper-plane";
+ //Variables para Guardar Transacciones
+ Vidtransaccion : any
+ 
 
 
   constructor(
@@ -51,6 +55,7 @@ export class InversionComponent implements OnInit {
       })
 
       this.tipotransaccion.getTipoTransacciones().subscribe(data => {
+        console.log(data)
         this.ListTipoTransaccion = data;
       })
   }
@@ -59,6 +64,25 @@ export class InversionComponent implements OnInit {
     this.modalService.open(content,{
       size: 'lg'
     });
+  }
+  OnCambiarTT(id : any){
+    //console.log(id.target.value)
+    if(id.target.value === "1"){      
+      this.SimboloTransaccion = "fas fa-sign-in-alt"
+    }
+    if(id.target.value === "2"){
+      this.SimboloTransaccion = "fas fa-sync"      
+    }
+    if(id.target.value === "3"){
+      this.SimboloTransaccion = "fas fa-external-link-alt"      
+    }
+    if(id.target.value === "4"){
+      this.SimboloTransaccion = "fas fa-chart-line"      
+    }
+    if(id.target.value === "5"){
+      this.SimboloTransaccion = "far fa-paper-plane"      
+    }
+    
   }
 
 }
