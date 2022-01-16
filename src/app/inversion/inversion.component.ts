@@ -5,6 +5,8 @@ import { exchangeService } from '../services/exchange.service';
 import { criptomonedaService } from '../services/criptoMoneda.Service';
 import { tipotransaccionService } from '../services/tipotransaccion.service';
 import { inversionModel } from '../Model/inversion.model';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+
 @Component({
   selector: 'app-inversion',
   templateUrl: './inversion.component.html',
@@ -20,7 +22,7 @@ export class InversionComponent implements OnInit {
  SimboloTransaccion  : any = "far fa-paper-plane";
  //Variables para Guardar Transacciones
  Vidtransaccion : any
- Vprecio : any
+ Vprecio : any = 0;
  VidExchange  : any
  VidCriptomoneda : any
  VInversion : any
@@ -32,7 +34,8 @@ export class InversionComponent implements OnInit {
     private exchangeService:exchangeService,
     private criptomonedaService:criptomonedaService,
     private tipotransaccion : tipotransaccionService,
-    config: NgbModalConfig, private modalService: NgbModal
+    config: NgbModalConfig, private modalService: NgbModal,
+    
     ) {
       // customize default values of modals used by this component tree
     config.backdrop = 'static';
@@ -91,29 +94,25 @@ export class InversionComponent implements OnInit {
     
   }
 
-  guardarTransaccion() :void {
-
-    let f = Date.now
+  guardarTransaccion() :void {    
 
     const models : inversionModel = {
-      idTransaccion : this.Vidtransaccion,
-      idExchangeOrigen : this.VidExchange,
-      IdCriptoMoneda :this.VidCriptomoneda,
-      Fecha : f,
-      Precio : this.Vprecio,
-      Inversion : this.VInversion,
+      IdtipoTransaccion : +this.Vidtransaccion,      
+      Precio : +this.Vprecio,
+      Inversion : +this.VInversion,
+      idExchangeOrigen : +this.VidExchange,
       CantidadCripto : this.Vcantidadcripto,
-      Estado : true,
+      IdCriptoMoneda :+this.VidCriptomoneda,      
+      //Estado : true,
       idExchangeDestino : 0,
       idcriptomonedaDestino : 0,
-      cantidadCriptoDestino : 0
-
-      
+      cantidadCriptoDestino : 0      
     }
     console.log(models);
-    /*this.transaccion.postGuardarT().subscribe(){data => {
-
-    }}*/
+    this.transaccion.postGuardarT(models).subscribe(date =>{
+      Swal.fire('Registro exitoso...', 'Bien', 'success');
+      this.modalService.dismissAll();
+    }, error => { Swal.fire('Registro exitoso...', error.message, 'error');})
   }
 
 }

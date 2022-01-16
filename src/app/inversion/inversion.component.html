@@ -88,7 +88,7 @@
         <div class="col">
           <div class="form-group">
             <label for="exampleInputPassword1">Cripto Divisa</label>
-            <select class="form-control col-sm-4" [(ngModel)]="VidCriptomoneda">
+            <select class="form-control" [(ngModel)]="VidCriptomoneda">
               <option *ngFor="let cp of ListCriptoMoneda" [value]="cp.id">
                 {{cp.nombre}}
               </option>
@@ -105,4 +105,3 @@
     </div>
   </ng-template>
   
- 
