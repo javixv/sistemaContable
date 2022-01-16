@@ -4,6 +4,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { exchangeService } from '../services/exchange.service';
 import { criptomonedaService } from '../services/criptoMoneda.Service';
 import { tipotransaccionService } from '../services/tipotransaccion.service';
+import { inversionModel } from '../Model/inversion.model';
 @Component({
   selector: 'app-inversion',
   templateUrl: './inversion.component.html',
@@ -69,6 +70,7 @@ export class InversionComponent implements OnInit {
       size: 'lg'
     });
   }
+
   OnCambiarTT(id : any){
     //console.log(id.target.value)
     if(id.target.value === "1"){      
@@ -87,6 +89,31 @@ export class InversionComponent implements OnInit {
       this.SimboloTransaccion = "far fa-paper-plane"      
     }
     
+  }
+
+  guardarTransaccion() :void {
+
+    let f = Date.now
+
+    const models : inversionModel = {
+      idTransaccion : this.Vidtransaccion,
+      idExchangeOrigen : this.VidExchange,
+      IdCriptoMoneda :this.VidCriptomoneda,
+      Fecha : f,
+      Precio : this.Vprecio,
+      Inversion : this.VInversion,
+      CantidadCripto : this.Vcantidadcripto,
+      Estado : true,
+      idExchangeDestino : 0,
+      idcriptomonedaDestino : 0,
+      cantidadCriptoDestino : 0
+
+      
+    }
+    console.log(models);
+    /*this.transaccion.postGuardarT().subscribe(){data => {
+
+    }}*/
   }
 
 }

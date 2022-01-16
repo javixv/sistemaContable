@@ -48,7 +48,7 @@
       <div class="row">
         <div class="col"><div class="form-group">
       <label for="exampleInputEmail1">Tipo de Transacción</label>
-      <select class="form-control"(change)="OnCambiarTT($event)" [ngModel]="Vidtransaccion">
+      <select class="form-control"(change)="OnCambiarTT($event)" [(ngModel)]="Vidtransaccion">
       <option *ngFor="let title of ListTipoTransaccion" [value]="title.id">
         {{title.nombre}}
       </option>
@@ -58,9 +58,9 @@
         <div class="col">
           <div class="form-group">
             <label for="exampleInputPassword1">Exchange</label>
-            <select class="form-control" [ngModel]="VidExchange">
-              <option *ngFor="let title of ListExchange">
-                {{title.nombre}}
+            <select class="form-control" [(ngModel)]="VidExchange">
+              <option *ngFor="let eh of ListExchange" [value]="eh.id">
+                {{eh.nombre}}
               </option>
               </select>
           </div>
@@ -68,23 +68,29 @@
         <div class="col">
           <div class="form-group">
           <label for="exampleInputPassword1">Precio</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" [ngModel]="Vprecio">
+          <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="Vprecio">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <div class="form-group">
-          <label for="exampleInputPassword1">Cantidad</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" [ngModel]="Vcantidadcripto">
+          <label for="exampleInputPassword1">Inversión $</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="VInversion">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+          <label for="exampleInputPassword1">Cantidad Cripto</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="Vcantidadcripto">
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="exampleInputPassword1">Cripto Divisa</label>
-            <select class="form-control col-sm-4" [ngModel]="VidCriptomoneda">
-              <option *ngFor="let title of ListCriptoMoneda">
-                {{title.nombre}}
+            <select class="form-control col-sm-4" [(ngModel)]="VidCriptomoneda">
+              <option *ngFor="let cp of ListCriptoMoneda" [value]="cp.id">
+                {{cp.nombre}}
               </option>
               </select>
             </div>
@@ -94,7 +100,8 @@
   
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+      <!--<button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>-->
+      <button type="button" class="btn btn-outline-dark" (click)="guardarTransaccion()">Save</button>
     </div>
   </ng-template>
   
