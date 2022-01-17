@@ -20,6 +20,7 @@
         <th scope="col">Cripto</th>
         <th scope="col">Wallet</th>
         <th scope="col">Transacción</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +33,7 @@
         <td>{{item.cantidadCripto | number:'1.8'}}</td>
         <td>{{item.nombre}}</td>
         <td><i [class]="item.imgtt"></i> {{ item.tipoTrac}}</td>
+        <td><button class="btn btn-danger btn-sm" (click)="deleteTransaccion(item.id)"><i class="far fa-trash-alt"></i></button></td>
       </tr>
       
     </tbody>

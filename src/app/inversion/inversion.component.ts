@@ -109,10 +109,20 @@ export class InversionComponent implements OnInit {
       cantidadCriptoDestino : 0      
     }
     console.log(models);
+    let content : any
     this.transaccion.postGuardarT(models).subscribe(date =>{
       Swal.fire('Registro exitoso...', 'Bien', 'success');
-      this.modalService.dismissAll();
+      this.modalService.dismissAll(content);
+      this.getTransacciones();
     }, error => { Swal.fire('Registro exitoso...', error.message, 'error');})
+  }
+
+  deleteTransaccion(id : any) : void{
+    let content : any
+      this.transaccion.delete(+id).subscribe(date => {
+        this.modalService.dismissAll(content);
+        this.getTransacciones();
+      })
   }
 
 }
