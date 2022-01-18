@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { TansaccionService } from '../services/tansaccion.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { exchangeService } from '../services/exchange.service';
@@ -6,12 +6,14 @@ import { criptomonedaService } from '../services/criptoMoneda.Service';
 import { tipotransaccionService } from '../services/tipotransaccion.service';
 import { inversionModel } from '../Model/inversion.model';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+//import Swal from 'sweetalert2/dist/sweetalert2.js';
+//import 'sweetalert2/src/sweetalert2.scss'
 
 @Component({
   selector: 'app-inversion',
   templateUrl: './inversion.component.html',
   styleUrls: ['./inversion.component.css'],
-  providers: [NgbModalConfig, NgbModal]
+  //providers: [NgbModalConfig, NgbModal]
 })
 export class InversionComponent implements OnInit {
   //Variables
@@ -38,18 +40,21 @@ export class InversionComponent implements OnInit {
  upInversion             : any
  upcantidadcripto        : any
 
+//----------Modal-----------------------------
+@ViewChild("content", { static: false }) final!: TemplateRef<any>;
 
   constructor(
     private transaccion:TansaccionService,
     private exchangeService:exchangeService,
     private criptomonedaService:criptomonedaService,
     private tipotransaccion : tipotransaccionService,
-    config: NgbModalConfig, private modalService: NgbModal,
+    //config: NgbModalConfig, 
+    private modalService: NgbModal,
     
     ) {
       // customize default values of modals used by this component tree
-    config.backdrop = 'static';
-    config.keyboard = false;
+    //config.backdrop = 'static';
+    //config.keyboard = false;
 
      }
 
@@ -79,9 +84,11 @@ export class InversionComponent implements OnInit {
   }
 
   open(content : any) {
-    this.modalService.open(content,{
-      size: 'lg'
-    });
+    // this.modalService.open(content,{
+    //   size: 'lg'
+    // });
+
+    this.modalService.open(this.final, {size : 'lg'}); 
   }
 
   OnCambiarTT(id : any){
@@ -160,5 +167,21 @@ export class InversionComponent implements OnInit {
     }
     this.transaccion.UpdateTransaccion(models).subscribe()
   }
+
+  //Test
+simpleAlert(){
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 2500,
+  })
+  Toast.fire('Proceso Exitoso...', 'Tú prueba fue un éxito!', 'success')
+}
+//Test
+alertWithSuccess(){
+  Swal.fire('Thank you...', 'You submitted succesfully!', 'success')
+  //Swal.fire({title: 'Esta etapa requiere un documento',})
+}
 
 }
