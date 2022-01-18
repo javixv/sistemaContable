@@ -28,13 +28,23 @@ export class TansaccionService {
   }
 
   postGuardarT(model : any): Observable<any>{ 
-    console.log('modelos')   
+    //console.log('modelos')   
     return this.http.post(this.myAppUrl + this.myApiUrl + '/GuardarT', model);
   }
 
   delete(model : any): Observable<any>{ 
-    console.log('modelos')   
+    //console.log('modelos')   
     return this.http.get(this.myAppUrl + this.myApiUrl + '/delete?id='+ model);
+  }
+
+  getByIdTransaccion(model : any): Observable<any>{ 
+    //console.log('modelos')   
+    return this.http.get(this.myAppUrl + this.myApiUrl + '/GetById?id='+ model);
+  }
+  
+  UpdateTransaccion(model : any): Observable<any>{ 
+    //console.log('modelos')   
+    return this.http.put(this.myAppUrl + this.myApiUrl + '/Update',model);
   }
 
 

@@ -21,12 +21,22 @@ export class InversionComponent implements OnInit {
  ListCriptoMoneda    : any = [];
  SimboloTransaccion  : any = "far fa-paper-plane";
  //Variables para Guardar Transacciones
- Vidtransaccion : any
- Vprecio : any = 0;
- VidExchange  : any
- VidCriptomoneda : any
- VInversion : any
- Vcantidadcripto : any
+ Vidtransaccion         : any
+ Vprecio                : any = 0;
+ VidExchange            : any
+ VidCriptomoneda        : any
+ VInversion             : any
+ Vcantidadcripto        : any
+ VcantidadCriptoDestino : any
+ VidExchangeDestino     : any
+ VidcriptomonedaDestino : any
+ //Variables Editar
+ upidtransaccion         : any
+ upprecio                : any = 0;
+ upidExchange            : any
+ upidCriptomoneda        : any
+ upInversion             : any
+ upcantidadcripto        : any
 
 
   constructor(
@@ -123,6 +133,32 @@ export class InversionComponent implements OnInit {
         this.modalService.dismissAll(content);
         this.getTransacciones();
       })
+  }
+
+  getByIdTransaccion(id : any) : void {
+    this.transaccion.getByIdTransaccion(id).subscribe(data => {
+      this.upidtransaccion  = data[""]
+      this.upprecio         = data[""]
+      this.upidExchange     = data[""]
+      this.upidCriptomoneda = data[""]
+      this.upInversion      = data[""]
+      this.upcantidadcripto = data[""]
+    })
+  }
+
+  updateTransaccion() : void {
+    const models : inversionModel = {
+      IdtipoTransaccion : +this.upidtransaccion,      
+      Precio            : +this.upprecio,
+      Inversion         : +this.upInversion,
+      idExchangeOrigen  : +this.upidExchange,
+      CantidadCripto    :  this.upcantidadcripto,
+      IdCriptoMoneda    : +this.upidCriptomoneda,     
+      idExchangeDestino : 0,
+      idcriptomonedaDestino : 0,
+      cantidadCriptoDestino : 0      
+    }
+    this.transaccion.UpdateTransaccion(models).subscribe()
   }
 
 }
