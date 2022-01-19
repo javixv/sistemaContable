@@ -24,7 +24,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of ListaTransacciones">
+      <tr *ngFor="let item of ListaTransacciones | paginate: { itemsPerPage: 15, currentPage: p }">
         <th scope="row">{{ item.id}}</th>
         <td>{{ item.fecha | date:'dd/MM/YYYY'}}</td>
         <td>{{item.precio}}</td>
@@ -40,7 +40,7 @@
       
     </tbody>
   </table>
-
+  <pagination-controls (pageChange)="p = $event" screenReaderCurrentLabel="You're on page"></pagination-controls>
   <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Registrar nueva Transacción <i class="{{SimboloTransaccion}}"></i></h4>

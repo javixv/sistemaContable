@@ -40,7 +40,9 @@ export class InversionComponent implements OnInit {
  upInversion             : any
  upcantidadcripto        : any
  upId : any
-
+//----paginacion---------
+p                : number = 1;
+  filter           : string = '';
 //----------Modal-----------------------------
 @ViewChild("content", { static: false }) final!: TemplateRef<any>;
 @ViewChild("modalupdate", { static: false }) modalupdate!: TemplateRef<any>;
@@ -51,6 +53,7 @@ export class InversionComponent implements OnInit {
     private criptomonedaService:criptomonedaService,
     private tipotransaccion : tipotransaccionService,
     //config: NgbModalConfig, 
+    //private config : NgbPaginationConfig,
     private modalService: NgbModal,
     
     ) {
