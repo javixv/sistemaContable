@@ -39,9 +39,11 @@ export class InversionComponent implements OnInit {
  upidCriptomoneda        : any
  upInversion             : any
  upcantidadcripto        : any
+ upId : any
 
 //----------Modal-----------------------------
 @ViewChild("content", { static: false }) final!: TemplateRef<any>;
+@ViewChild("modalupdate", { static: false }) modalupdate!: TemplateRef<any>;
 
   constructor(
     private transaccion:TansaccionService,
@@ -114,6 +116,7 @@ export class InversionComponent implements OnInit {
   guardarTransaccion() :void {    
 
     const models : inversionModel = {
+      Id : 0,
       IdtipoTransaccion : +this.Vidtransaccion,      
       Precio : +this.Vprecio,
       Inversion : +this.VInversion,
@@ -123,7 +126,8 @@ export class InversionComponent implements OnInit {
       //Estado : true,
       idExchangeDestino : 0,
       idcriptomonedaDestino : 0,
-      cantidadCriptoDestino : 0      
+      cantidadCriptoDestino : 0,
+      IdExchange : 0      
     }
     console.log(models);
     let content : any
@@ -143,29 +147,44 @@ export class InversionComponent implements OnInit {
   }
 
   getByIdTransaccion(id : any) : void {
+    this.modalService.open(this.modalupdate, {size : 'lg'}); 
     this.transaccion.getByIdTransaccion(id).subscribe(data => {
-      this.upidtransaccion  = data[""]
-      this.upprecio         = data[""]
-      this.upidExchange     = data[""]
-      this.upidCriptomoneda = data[""]
-      this.upInversion      = data[""]
-      this.upcantidadcripto = data[""]
+      console.log(data)
+      this.upId = data.id
+      this.upidtransaccion  = data.idtipoTransaccion
+      this.upprecio         = data["precio"]
+      this.upidExchange     = data["idExchange"]
+      this.upidCriptomoneda = data["idCriptoMoneda"]
+      this.upInversion      = data["inversion"]
+      this.upcantidadcripto = data["cantidadCripto"]
+      console.log( this.upidtransaccion)
     })
   }
 
   updateTransaccion() : void {
+    //if(+this.upprecio === 0){this.upprecio = 0.00}
     const models : inversionModel = {
+      Id : +this.upId,
       IdtipoTransaccion : +this.upidtransaccion,      
       Precio            : +this.upprecio,
       Inversion         : +this.upInversion,
-      idExchangeOrigen  : +this.upidExchange,
+      IdExchange  : +this.upidExchange,
       CantidadCripto    :  this.upcantidadcripto,
       IdCriptoMoneda    : +this.upidCriptomoneda,     
       idExchangeDestino : 0,
       idcriptomonedaDestino : 0,
-      cantidadCriptoDestino : 0      
+      cantidadCriptoDestino : 0,
+      idExchangeOrigen :0  
     }
-    this.transaccion.UpdateTransaccion(models).subscribe()
+
+    console.log(models)
+    this.transaccion.UpdateTransaccion(models).subscribe(data => {
+      this.simpleAlert()
+      this.modalService.dismissAll();
+      this.getTransacciones();
+    }, error => { this.ErrorAlert()
+                  this.modalService.dismissAll(); 
+                })
   }
 
   //Test
@@ -177,6 +196,16 @@ simpleAlert(){
     timer: 2500,
   })
   Toast.fire('Proceso Exitoso...', 'Tú prueba fue un éxito!', 'success')
+}
+
+ErrorAlert(){
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 2500,
+  })
+  Toast.fire('Proceso fallo...', 'Algo salio mal :(', 'error')
 }
 //Test
 alertWithSuccess(){

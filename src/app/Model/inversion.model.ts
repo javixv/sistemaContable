@@ -1,4 +1,5 @@
 export interface inversionModel {
+    Id : any
     IdtipoTransaccion     : any;    
     //Fecha                 : any; 
     Precio                : any; 
@@ -9,5 +10,6 @@ export interface inversionModel {
     IdCriptoMoneda        : any;
     idExchangeDestino     : any;
     cantidadCriptoDestino : any;
-    idcriptomonedaDestino : any; 
+    idcriptomonedaDestino : any;
+    IdExchange : any 
 }

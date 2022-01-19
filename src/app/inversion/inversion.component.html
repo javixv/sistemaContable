@@ -33,7 +33,9 @@
         <td>{{item.cantidadCripto | number:'1.8'}}</td>
         <td>{{item.nombre}}</td>
         <td><i [class]="item.imgtt"></i> {{ item.tipoTrac}}</td>
-        <td><button class="btn btn-danger btn-sm" (click)="deleteTransaccion(item.id)"><i class="far fa-trash-alt"></i></button></td>
+        <td><button class="btn btn-danger btn-sm" (click)="deleteTransaccion(item.id)"><i class="far fa-trash-alt"></i></button>
+            <button class="btn btn-success btn-sm" style="margin-left: 1px;" (click)="getByIdTransaccion(item.id)"><i class="fas fa-edit"></i></button>
+        </td>
       </tr>
       
     </tbody>
@@ -107,6 +109,73 @@
     </div>
   </ng-template>
   
+  <ng-template #modalupdate let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Editar Transacción </h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col"><div class="form-group">
+      <label for="exampleInputEmail1">Tipo de Transacción</label>
+      <select class="form-control"(change)="OnCambiarTT($event)" [(ngModel)]="upidtransaccion">
+      <option *ngFor="let title of ListTipoTransaccion" [ngValue]="title.id">
+        {{title.nombre}}
+      </option>
+      </select>
+      </div>
+      </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Exchange</label>
+            <select class="form-control" [(ngModel)]="upidExchange">
+              <option *ngFor="let eh of ListExchange" [value]="eh.id">
+                {{eh.nombre}}
+              </option>
+              </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+          <label for="exampleInputPassword1">Precio</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="upprecio">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+          <label for="exampleInputPassword1">Inversión $</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="upInversion">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+          <label for="exampleInputPassword1">Cantidad Cripto</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="upcantidadcripto">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Cripto Divisa</label>
+            <select class="form-control" [(ngModel)]="upidCriptomoneda">
+              <option *ngFor="let cp of ListCriptoMoneda" [value]="cp.id">
+                {{cp.nombre}}
+              </option>
+              </select>
+            </div>
+        </div>
+        <input type="hidden" class="" id="exampleInputPassword1" [(ngModel)]="upId">
+      </div> 
+  
+    </div>
+    <div class="modal-footer">
+      <!--<button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>-->
+      <button type="button" class="btn btn-outline-dark" (click)="updateTransaccion()">Save</button>
+    </div>
+  </ng-template>
 <!--
   <button (click)="simpleAlert()">Simple Alert</button>
   <button (click)="alertWithSuccess()">Alert with Success</button>

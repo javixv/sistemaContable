@@ -44,7 +44,7 @@ export class TansaccionService {
   
   UpdateTransaccion(model : any): Observable<any>{ 
     //console.log('modelos')   
-    return this.http.put(this.myAppUrl + this.myApiUrl + '/Update',model);
+    return this.http.post(this.myAppUrl + this.myApiUrl + '/Update',model);
   }
 
 
