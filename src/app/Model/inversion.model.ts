@@ -6,7 +6,7 @@ export interface inversionModel {
     Inversion             : any; 
     idExchangeOrigen      : any; 
     CantidadCripto        : any; 
-    //Estado                : any; 
+    Estado                : any; 
     IdCriptoMoneda        : any;
     idExchangeDestino     : any;
     cantidadCriptoDestino : any;

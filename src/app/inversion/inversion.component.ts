@@ -126,19 +126,33 @@ p                : number = 1;
       idExchangeOrigen : +this.VidExchange,
       CantidadCripto : this.Vcantidadcripto,
       IdCriptoMoneda :+this.VidCriptomoneda,      
-      //Estado : true,
+      Estado : true,
       idExchangeDestino : 0,
       idcriptomonedaDestino : 0,
-      cantidadCriptoDestino : 0,
-      IdExchange : 0      
+      cantidadCriptoDestino : '0',
+      IdExchange : +this.VidExchange     
     }
+    // const models : inversionModel = {
+    //   Id : +this.upId,
+    //   IdtipoTransaccion : +this.Vidtransaccion,      
+    //   Precio            : +this.Vprecio,
+    //   Inversion         : +this.VInversion,
+    //   IdExchange        : +this.VidExchange,
+    //   CantidadCripto    :  this.Vcantidadcripto,
+    //   IdCriptoMoneda    : +this.VidCriptomoneda,     
+    //   idExchangeDestino : 0,
+    //   idcriptomonedaDestino : 0,
+    //   cantidadCriptoDestino : '0',
+    //   idExchangeOrigen :0,
+    //   Estado : true  
+    // }
     console.log(models);
     let content : any
     this.transaccion.postGuardarT(models).subscribe(date =>{
       Swal.fire('Registro exitoso...', 'Bien', 'success');
       this.modalService.dismissAll(content);
       this.getTransacciones();
-    }, error => { Swal.fire('Registro exitoso...', error.message, 'error');})
+    }, error => { Swal.fire('Error de Registro...', error.message, 'error');})
   }
 
   deleteTransaccion(id : any) : void{
@@ -171,13 +185,14 @@ p                : number = 1;
       IdtipoTransaccion : +this.upidtransaccion,      
       Precio            : +this.upprecio,
       Inversion         : +this.upInversion,
-      IdExchange  : +this.upidExchange,
+      IdExchange        : +this.upidExchange,
       CantidadCripto    :  this.upcantidadcripto,
       IdCriptoMoneda    : +this.upidCriptomoneda,     
       idExchangeDestino : 0,
       idcriptomonedaDestino : 0,
       cantidadCriptoDestino : 0,
-      idExchangeOrigen :0  
+      idExchangeOrigen :0,
+      Estado : true  
     }
 
     console.log(models)
