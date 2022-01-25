@@ -29,9 +29,9 @@ export class InversionComponent implements OnInit {
  VidCriptomoneda        : any
  VInversion             : any
  Vcantidadcripto        : any
- VcantidadCriptoDestino : any
+ VcantidadCriptoDestino : any = "0"
  VidExchangeDestino     : any
- VidcriptomonedaDestino : any
+ VidcriptomonedaDestino : any 
  //Variables Editar
  upidtransaccion         : any
  upprecio                : any = 0;
@@ -42,7 +42,7 @@ export class InversionComponent implements OnInit {
  upId : any
 //----paginacion---------
 p                : number = 1;
-  filter           : string = '';
+filter           : string = '';
 //----------Modal-----------------------------
 @ViewChild("content", { static: false }) final!: TemplateRef<any>;
 @ViewChild("modalupdate", { static: false }) modalupdate!: TemplateRef<any>;
@@ -127,9 +127,9 @@ p                : number = 1;
       CantidadCripto : this.Vcantidadcripto,
       IdCriptoMoneda :+this.VidCriptomoneda,      
       Estado : true,
-      idExchangeDestino : 0,
-      idcriptomonedaDestino : 0,
-      cantidadCriptoDestino : '0',
+      idExchangeDestino : +this.VidExchangeDestino,
+      idcriptomonedaDestino : +this.VidcriptomonedaDestino,
+      cantidadCriptoDestino : this.VcantidadCriptoDestino,
       IdExchange : +this.VidExchange     
     }
     // const models : inversionModel = {

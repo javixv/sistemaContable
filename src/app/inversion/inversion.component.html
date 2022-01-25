@@ -101,7 +101,36 @@
         </div>
         
       </div> 
-  
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+          <label for="exampleInputPassword1">Exchange Destino</label>
+          <select class="form-control" [(ngModel)]="VidExchangeDestino">
+            <option *ngFor="let eh of ListExchange" [value]="eh.id">
+              {{eh.nombre}}
+            </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+          <label for="exampleInputPassword1">Cantidad Cripto Destino</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="VcantidadCriptoDestino">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Cripto Divisa Destino</label>
+            <select class="form-control" [(ngModel)]="VidcriptomonedaDestino">
+              <option *ngFor="let cp of ListCriptoMoneda" [value]="cp.id">
+                {{cp.nombre}}
+              </option>
+              </select>
+            </div>
+        </div>
+        
+      </div>
     </div>
     <div class="modal-footer">
       <!--<button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>-->
@@ -169,7 +198,7 @@
         </div>
         <input type="hidden" class="" id="exampleInputPassword1" [(ngModel)]="upId">
       </div> 
-  
+      
     </div>
     <div class="modal-footer">
       <!--<button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>-->
