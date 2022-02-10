@@ -27,11 +27,11 @@ export class InversionComponent implements OnInit {
  Vprecio                : any = 0;
  VidExchange            : any
  VidCriptomoneda        : any
- VInversion             : any
+ VInversion             : any = 0;
  Vcantidadcripto        : any
  VcantidadCriptoDestino : any = "0"
- VidExchangeDestino     : any
- VidcriptomonedaDestino : any 
+ VidExchangeDestino     : any = 0;
+ VidcriptomonedaDestino : any = 0;
  //Variables Editar
  upidtransaccion         : any
  upprecio                : any = 0;
