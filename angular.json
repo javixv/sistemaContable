@@ -79,8 +79,12 @@
           "configurations": {
             "production": {
               "browserTarget": "InversionFinanazas:build:production"
+            },
+            "development": { 
+              "browserTarget": "InversionFinanazas:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
