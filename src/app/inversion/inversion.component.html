@@ -9,7 +9,9 @@
 </div>
 </div>
 <br>
-<table class="table table-sm">
+<div class="card-body">
+<div class="table-responsive">
+<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -39,7 +41,23 @@
       </tr>
       
     </tbody>
+    <tfoot>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Inversion</th>
+        <th scope="col">Abrev</th>
+        <th scope="col">Cripto</th>
+        <th scope="col">Wallet</th>
+        <th scope="col">Transacción</th>
+        <th></th>
+      </tr>
+    </tfoot>
   </table>
+  </div>
+  </div>
+  <!--Contro de paginado de Tablas-->
   <pagination-controls (pageChange)="p = $event" screenReaderCurrentLabel="You're on page"></pagination-controls>
   <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">

@@ -7,12 +7,20 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/header/header.component';
+import { NotpagesfoundComponent } from './404/notpagesfound.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { FooterComponent } from './footer/footer.component';
+import { TopbarComponent} from './shared/Topbar/topbar.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    NotpagesfoundComponent,
+    SidebarComponent,
+    FooterComponent,
+    TopbarComponent
   ],
   imports: [
     
