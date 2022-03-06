@@ -10,7 +10,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { NotpagesfoundComponent } from './404/notpagesfound.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
-import { TopbarComponent} from './shared/Topbar/topbar.component'
+import { TopbarComponent} from './shared/Topbar/topbar.component';
+import { ProfileComponent } from './prifile/profile/profile.component'
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { TopbarComponent} from './shared/Topbar/topbar.component'
     NotpagesfoundComponent,
     SidebarComponent,
     FooterComponent,
-    TopbarComponent
+    TopbarComponent,
+    ProfileComponent
   ],
   imports: [
     
