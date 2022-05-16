@@ -7,11 +7,12 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/header/header.component';
-import { NotpagesfoundComponent } from './404/notpagesfound.component';
+import { NotpagesfoundComponent } from './shared/404/notpagesfound.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './shared/footer/footer.component';
 import { TopbarComponent} from './shared/Topbar/topbar.component';
-import { ProfileComponent } from './prifile/profile/profile.component'
+import { ProfileComponent } from './prifile/profile/profile.component';
+import { TablesComponent } from './components/tables/tables.component'
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { ProfileComponent } from './prifile/profile/profile.component'
     SidebarComponent,
     FooterComponent,
     TopbarComponent,
-    ProfileComponent
+    ProfileComponent,    
   ],
   imports: [
     
@@ -32,7 +33,7 @@ import { ProfileComponent } from './prifile/profile/profile.component'
     NgbModule,
     FormsModule,
     
-  ],
+  ],exports :[],
   providers: [],
   bootstrap: [AppComponent]
 })

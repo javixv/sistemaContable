@@ -3,7 +3,7 @@
     <div>
 <h1>Mercado de Cripto Divisas</h1>
 </div>
-<div class="row">
+<!-- <div class="row">
 <div class="card" style="width: 18rem; margin: 5px;">
   <img src="../../assets/img/binance.png" class="card-img-top rounded-bottom" alt="..." style="height: 150px;">
   <div class="card-body">
@@ -20,5 +20,15 @@
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
+</div> -->
+<div class="row">
+  <div class="col-6">
+  <div class="card">   
+    <div class="card-body">
+      <app-tables [GridData]="lista" [ColData]="columnas"></app-tables>      
+    </div>
+  </div>
 </div>
+</div>
+
 </div>

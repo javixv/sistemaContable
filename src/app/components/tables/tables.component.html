@@ -1,0 +1,13 @@
+<table class="table-content active-row">
+    <thead>
+      <tr>
+        <th *ngFor="let data of ColData">{{data.title}}</th>        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of GridData">
+        <td *ngFor="let key of ColData">{{record[key.field]}}</td>        
+      </tr>
+      
+    </tbody>
+    </table>

@@ -27,6 +27,11 @@ export class TansaccionService {
     return this.http.get(this.myAppUrl + this.myApiUrl + '/GetAllView');
   }
 
+  getViewCapitalCriptos(): Observable<any>{
+    
+    return this.http.get(this.myAppUrl + this.myApiUrl + '/ViewCapitalCriptos');
+  }
+
   postGuardarT(model : any): Observable<any>{ 
     //console.log('modelos')   
     return this.http.post(this.myAppUrl + this.myApiUrl + '/GuardarT', model);

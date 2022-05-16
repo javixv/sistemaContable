@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { TansaccionService } from '../services/tansaccion.service';
+import { TansaccionService } from '../services/transaccion.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { exchangeService } from '../services/exchange.service';
 import { criptomonedaService } from '../services/criptoMoneda.Service';

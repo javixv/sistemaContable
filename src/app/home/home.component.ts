@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TansaccionService } from '../services/transaccion.service';
 
 @Component({
   selector: 'app-home',
@@ -32,10 +33,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+ lista : any
+ columnas : any = [{field : 'id', title :'ID'},
+                   //{field : 'conteo', title :'Conteo'},
+                   {field : 'abrev', title :'Abrev'},
+                   {field : 'usd', title :'USD'},
+                   {field : 'total', title :'Total'}]
+  constructor(private transaccion : TansaccionService ) { }
 
   ngOnInit(): void {
+    this.getViewCriptos()
+  }
+
+
+  getViewCriptos(){
+    this.transaccion.getViewCapitalCriptos().subscribe(data => {
+      this.lista = data
+      console.log(data)
+    })
   }
   /*
   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
